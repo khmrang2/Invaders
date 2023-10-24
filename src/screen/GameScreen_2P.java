@@ -616,7 +616,7 @@ public class GameScreen_2P extends Screen {
         isboss = gameSettings.checkIsBoss();
 
         if (inputManager.isKeyPressedOnce(KeyEvent.VK_1)) {
-            if (itemManager.getShieldCount() > 0 && timer.getElapsedTime() != 0 && ship_1P.getShieldState() != true && ship_2P.getShieldState() != true && !levelFinished)
+            if (itemManager.getShieldCount() > 0 && timer.getElapsedTime() != 0 && (ship_1P.getShieldState() != true || ship_2P.getShieldState() != true) && !levelFinished)
             {
                 logger.info("Key number 1 press");
                 itemManager.PlusShieldCount(-1);
@@ -799,22 +799,30 @@ public class GameScreen_2P extends Screen {
             if (bullet.getSpeed() > 0) {
                 if (checkCollision(bullet, this.ship_1P) && !this.levelFinished) {
                     recyclableBullet.add(bullet);
-                    if (!this.ship_1P.isDestroyed()) {
-                        this.ship_1P.destroy();
-                        if (this.lives_1p != 1) soundEffect.playShipCollisionSound();
-                        this.lives_1p--;
-                        this.logger.info("Hit on player ship_1p, " + this.lives_1p
-                                + " lives remaining.");
+                    if (this.ship_1P.getShieldState()){
+                        this.ship_1P.setShieldState(false);
+                    } else {
+                        if (!this.ship_1P.isDestroyed()) {
+                            this.ship_1P.destroy();
+                            if (this.lives_1p != 1) soundEffect.playShipCollisionSound();
+                            this.lives_1p--;
+                            this.logger.info("Hit on player ship_1p, " + this.lives_1p
+                                    + " lives remaining.");
+                        }
                     }
                 }
                 else if (checkCollision(bullet, this.ship_2P) && !this.levelFinished) {
                     recyclableBullet.add(bullet);
-                    if (!this.ship_2P.isDestroyed()) {
-                        this.ship_2P.destroy();
-                        if (this.lives_2p != 1) soundEffect.playShipCollisionSound();
-                        this.lives_2p--;
-                        this.logger.info("Hit on player ship_2p, " + this.lives_2p
-                                + " lives remaining.");
+                    if (this.ship_2P.getShieldState()){
+                        this.ship_2P.setShieldState(false);
+                    } else {
+                        if (!this.ship_2P.isDestroyed()) {
+                            this.ship_2P.destroy();
+                            if (this.lives_2p != 1) soundEffect.playShipCollisionSound();
+                            this.lives_2p--;
+                            this.logger.info("Hit on player ship_2p, " + this.lives_2p
+                                    + " lives remaining.");
+                        }
                     }
                 }
             }
