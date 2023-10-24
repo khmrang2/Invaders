@@ -66,6 +66,7 @@ public class Ship extends Entity {
 		else if(type == "g"){
 			this.spriteType = SpriteType.ShipG;
 		}
+		this.spriteType = SpriteType.ShipD;
 
 		this.shootingCooldown = Core.getCooldown(SHOOTING_INTERVAL);
 		this.destructionCooldown = Core.getCooldown(1000);
@@ -126,7 +127,7 @@ public class Ship extends Entity {
 	 */
 	public final void update() {
 		if(this.spriteType == spriteType.ShipA || this.spriteType == spriteType.ShipADestroyed || this.spriteType == spriteType.ShipAShileded) {
-			if(this.shipEffect.getShieldState() == true){
+			if(this.shipEffect.getShieldState()){
 				this.spriteType = SpriteType.ShipAShileded;
 			}else{
 				if (!this.destructionCooldown.checkFinished()) {
@@ -155,7 +156,7 @@ public class Ship extends Entity {
 					this.spriteType = SpriteType.ShipC;
 				}
 			}
-		}else if(this.spriteType == spriteType.ShipD || this.spriteType == spriteType.ShipDDestroyed) {
+		}else if(this.spriteType == spriteType.ShipD || this.spriteType == spriteType.ShipDDestroyed || this.spriteType == spriteType.ShipDShileded) {
 			if (this.shipEffect.getShieldState()) {
 				this.spriteType = SpriteType.ShipDShileded;
 			} else {
@@ -166,7 +167,7 @@ public class Ship extends Entity {
 				}
 			}
 		}
-		else if(this.spriteType == spriteType.ShipE || this.spriteType == spriteType.ShipEDestroyed) {
+		else if(this.spriteType == spriteType.ShipE || this.spriteType == spriteType.ShipEDestroyed || this.spriteType == spriteType.ShipEShileded) {
 			if(this.shipEffect.getShieldState()){
 				this.spriteType = SpriteType.ShipEShileded;
 			}else {
@@ -177,7 +178,7 @@ public class Ship extends Entity {
 				}
 			}
 		}
-		else if(this.spriteType == spriteType.ShipF || this.spriteType == spriteType.ShipFDestroyed) {
+		else if(this.spriteType == spriteType.ShipF || this.spriteType == spriteType.ShipFDestroyed || this.spriteType == spriteType.ShipFShileded) {
 			if(this.shipEffect.getShieldState()){
 				this.spriteType = SpriteType.ShipFShileded;
 			}else {
@@ -188,7 +189,7 @@ public class Ship extends Entity {
 				}
 			}
 		}
-		else if(this.spriteType == spriteType.ShipG || this.spriteType == spriteType.ShipGDestroyed) {
+		else if(this.spriteType == spriteType.ShipG || this.spriteType == spriteType.ShipGDestroyed || this.spriteType == spriteType.ShipGShileded) {
 			if(this.shipEffect.getShieldState()){
 				this.spriteType = SpriteType.ShipGShileded;
 			}else {
