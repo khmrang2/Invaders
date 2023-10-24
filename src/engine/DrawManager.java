@@ -230,6 +230,10 @@ public final class DrawManager {
 		ShipAShileded,
 		ShipBShileded,
 		ShipCShileded,
+		ShipDShileded,
+		ShipEShileded,
+		ShipFShileded,
+		ShipGShileded,
 		EnhanceStone,
 		//ShipCShileded,
 		gravestone,
@@ -332,6 +336,11 @@ public final class DrawManager {
 			spriteMap.put(SpriteType.ShipAShileded, new boolean[13][8]);
 			spriteMap.put(SpriteType.ShipBShileded, new boolean[13][8]);
 			spriteMap.put(SpriteType.ShipCShileded, new boolean[13][8]);
+			spriteMap.put(SpriteType.ShipDShileded, new boolean[13][8]);
+			spriteMap.put(SpriteType.ShipEShileded, new boolean[13][8]);
+			spriteMap.put(SpriteType.ShipFShileded, new boolean[13][8]);
+			spriteMap.put(SpriteType.ShipGShileded, new boolean[13][8]);
+
 			spriteMap.put(SpriteType.Explosion4, new boolean[10][10]);
 			spriteMap.put(SpriteType.gravestone, new boolean[13][9]);
 			spriteMap.put(SpriteType.Ghost, new boolean[9][11]);

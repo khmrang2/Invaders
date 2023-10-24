@@ -18,7 +18,7 @@ import engine.DrawManager.SpriteType;
 public class Ship extends Entity {
 
 	/** Time between shots. */
-	private static int SHOOTING_INTERVAL = 750;
+	private static int SHOOTING_INTERVAL = 7;
 	/** Speed of the bullets shot by the ship. */
 	public static final int BULLET_SPEED = -6;
 	/** Speed of the bullets shot by the ship. */
@@ -127,7 +127,7 @@ public class Ship extends Entity {
 	public final void update() {
 		if(this.spriteType == spriteType.ShipA || this.spriteType == spriteType.ShipADestroyed || this.spriteType == spriteType.ShipAShileded) {
 			if(this.shipEffect.getShieldState() == true){
-				this.spriteType = spriteType.ShipAShileded;
+				this.spriteType = SpriteType.ShipAShileded;
 			}else{
 				if (!this.destructionCooldown.checkFinished()) {
 					this.spriteType = SpriteType.ShipADestroyed;
@@ -137,7 +137,7 @@ public class Ship extends Entity {
 			}
 		}else if(this.spriteType == spriteType.ShipB || this.spriteType == spriteType.ShipBDestroyed || this.spriteType == spriteType.ShipBShileded) {
 			if(this.shipEffect.getShieldState()){
-				this.spriteType = spriteType.ShipBShileded;
+				this.spriteType = SpriteType.ShipBShileded;
 			}else{
 				if (!this.destructionCooldown.checkFinished()) {
 					this.spriteType = SpriteType.ShipBDestroyed;
@@ -147,7 +147,7 @@ public class Ship extends Entity {
 			}
 		}else if(this.spriteType == spriteType.ShipC || this.spriteType == spriteType.ShipCDestroyed || this.spriteType == spriteType.ShipCShileded) {
 			if(this.shipEffect.getShieldState()){
-				this.spriteType = spriteType.ShipCShileded;
+				this.spriteType = SpriteType.ShipCShileded;
 			}else{
 				if (!this.destructionCooldown.checkFinished()) {
 					this.spriteType = SpriteType.ShipCDestroyed;
@@ -156,35 +156,48 @@ public class Ship extends Entity {
 				}
 			}
 		}else if(this.spriteType == spriteType.ShipD || this.spriteType == spriteType.ShipDDestroyed) {
-			if (!this.destructionCooldown.checkFinished()) {
+			if (this.shipEffect.getShieldState()) {
+				this.spriteType = SpriteType.ShipDShileded;
+			} else {
+				if (!this.destructionCooldown.checkFinished()) {
 					this.spriteType = SpriteType.ShipDDestroyed;
 				} else {
 					this.spriteType = SpriteType.ShipD;
 				}
 			}
+		}
 		else if(this.spriteType == spriteType.ShipE || this.spriteType == spriteType.ShipEDestroyed) {
-			if (!this.destructionCooldown.checkFinished()) {
-				this.spriteType = SpriteType.ShipEDestroyed;
-			} else {
-				this.spriteType = SpriteType.ShipE;
+			if(this.shipEffect.getShieldState()){
+				this.spriteType = SpriteType.ShipEShileded;
+			}else {
+				if (!this.destructionCooldown.checkFinished()) {
+					this.spriteType = SpriteType.ShipEDestroyed;
+				} else {
+					this.spriteType = SpriteType.ShipE;
+				}
 			}
-
 		}
 		else if(this.spriteType == spriteType.ShipF || this.spriteType == spriteType.ShipFDestroyed) {
-			if (!this.destructionCooldown.checkFinished()) {
-				this.spriteType = SpriteType.ShipFDestroyed;
-			} else {
-				this.spriteType = SpriteType.ShipF;
+			if(this.shipEffect.getShieldState()){
+				this.spriteType = SpriteType.ShipFShileded;
+			}else {
+				if (!this.destructionCooldown.checkFinished()) {
+					this.spriteType = SpriteType.ShipFDestroyed;
+				} else {
+					this.spriteType = SpriteType.ShipF;
+				}
 			}
-
 		}
 		else if(this.spriteType == spriteType.ShipG || this.spriteType == spriteType.ShipGDestroyed) {
-			if (!this.destructionCooldown.checkFinished()) {
-				this.spriteType = SpriteType.ShipGDestroyed;
-			} else {
-				this.spriteType = SpriteType.ShipG;
+			if(this.shipEffect.getShieldState()){
+				this.spriteType = SpriteType.ShipGShileded;
+			}else {
+				if (!this.destructionCooldown.checkFinished()) {
+					this.spriteType = SpriteType.ShipGDestroyed;
+				} else {
+					this.spriteType = SpriteType.ShipG;
+				}
 			}
-
 		}
 	}
 

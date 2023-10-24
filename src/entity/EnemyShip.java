@@ -30,7 +30,7 @@ public class EnemyShip extends Entity {
 	/** Point value of a boss enemy. */
 	private static final int BOSS_TYPE_POINTS = 1000;
 	/** Item drop percent*/
-	private final double DROP_ITEM_PROB = 0.05;
+	private final double DROP_ITEM_PROB = 0.95;
 
 	/** 스프라이트 변경 쿨다운. */
 	private Cooldown animationCooldown;

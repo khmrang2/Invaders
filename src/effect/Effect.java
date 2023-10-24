@@ -32,6 +32,7 @@ public class Effect {
         attackSpeedEffectCooldown = Core.getCooldown(5000);
         DebuffEffectCooldown = Core.getCooldown(5000);
         debuffSturnEffect = Core.getCooldown(2000);
+        shieldState = true;
         bomb = false;
     }
     /**
